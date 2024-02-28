@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Login;
+use App\Http\Controllers\Logout;
+use App\Http\Controllers\Postpage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +19,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login', function () {  // Skapar väg till Loginsida
+    return view('login');
+});
+
+Route::get('/postpage', function () { //Routing till postpage
+    return view('postpage');
+})->middleware('auth'); // Kräver inlogg för att besöka sida, utloggad användare får error
+
+Route::post('login', Login::class); // Aktiverar loginfunctionen/classen
+Route::get('/logout', Logout::class)->name('logout'); // Aktiverar logout
