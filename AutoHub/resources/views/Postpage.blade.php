@@ -1,5 +1,5 @@
-@extends('layouts.app');
-<header class="w-full h-11 flex justify-around items-center">
+@extends('layouts.app')
+<header class="w-full h-20 flex justify-around items-center shadow">
     <div class="text-xl">
         @auth<p class="">Hello {{ Auth::user()->name }}!</p>@endauth
     </div>

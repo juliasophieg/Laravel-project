@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 use function Laravel\Prompts\alert;
 
-class Login extends Controller
+class LoginController extends Controller
 {
 
     public function __invoke(Request $request)

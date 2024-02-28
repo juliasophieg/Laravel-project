@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
-class Logout extends Controller
+class LogoutController extends Controller
 {
 
     public function __invoke(Request $request)
