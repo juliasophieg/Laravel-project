@@ -10,3 +10,8 @@
         <p><a href="{{ route('logout') }}">Log out</a></p>
     </div>
 </header>
+
+<div>
+    {{-- @foreach ($collection as $item)
+    @endforeach --}}
+</div>

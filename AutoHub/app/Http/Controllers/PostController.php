@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Facades\Auth;
 
-class Postpage extends Controller
+class PostController extends Controller
 {
     public function __invoke(Request $request)
     {

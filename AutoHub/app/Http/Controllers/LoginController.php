@@ -22,8 +22,7 @@ class LoginController extends Controller
             return redirect()->intended('postpage');
         } else {
 
-            alert('login failed');
-            echo 'login failed';
+            return redirect('LoginError');
         }
     }
 }
