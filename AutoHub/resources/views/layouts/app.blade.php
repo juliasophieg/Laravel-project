@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    @vite('resources/css/app.css')
+    @yield('resources/css/app.css')
 </head>
 
 <body>

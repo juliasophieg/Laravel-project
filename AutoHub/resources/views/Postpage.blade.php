@@ -11,7 +11,25 @@
     </div>
 </header>
 
+<body>
+    <form method="POST" action="/posts" enctype="multipart/form-data">
+        @csrf
+        <label for="description">Create car post</label><br>
+        <textarea id="description" name="description" rows="4" cols="50"></textarea>
+        <!--<input type="file" name="carImg" id="carImg">-->
+        <input type="submit" value="Add car">
+    </form>
+</body>
+
 <div>
-    {{-- @foreach ($collection as $item)
-    @endforeach --}}
+    @if (isset($posts) && !$posts->isEmpty())
+    @foreach ($posts as $post)
+    <div id="post">
+        <p>{{ $post->user->name }}:</p>
+        <p>{{ $post->description }}</p>
+    </div>
+    @endforeach
+    @else
+    <p>No posts available.</p>
+    @endif
 </div>

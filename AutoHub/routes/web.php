@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\Postpage;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostpageController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,3 +34,6 @@ Route::get('/logout', LogoutController::class)->name('logout'); // Aktiverar log
 Route::get('/postpage', function () { //Routing till postpage
     return view('postpage');
 })->middleware('auth'); // Kräver inlogg för att besöka sida, utloggad användare får error
+
+Route::get('postpage', PostpageController::class)->middleware('auth');
+Route::post('posts', PostController::class)->middleware('auth');
