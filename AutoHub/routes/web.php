@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\Postpage;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,7 @@ Route::get('/LoginError', function () {  // Skapar väg till Loginsida
 
 
 Route::post('/register', [RegisterController::class, 'register'])->name('register.store'); // Aktiverar register class
+Route::post('/post', [PostController::class, 'store'])->name('post.store');
 
 
 Route::post('login', LoginController::class); // Aktiverar loginfunctionen/classen

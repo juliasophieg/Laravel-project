@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('user_name');
-            $table->string('description');
+            $table->string('subject');
+            $table->string('message');
             $table->timestamps(); //* HAR AUTOMATISK CREATED_AT OCH UPDATED_AT*//
         });
     }

@@ -8,9 +8,24 @@ use Illuminate\Facades\Auth;
 
 class PostController extends Controller
 {
-    public function __invoke(Request $request)
+
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'subject' => 'required|string|max:30',
+            'message' => 'required|string|max:255'
+        ]);
+
+        Post::create([
+            'subject' => $request->subject,
+            'message' => $request->message,
+        ]);
+
+        $posts = Post::all();
+
+        return view('postpage', ['posts' => $posts]);
+
+        return redirect()->route('postpage');
     }
 }
 
