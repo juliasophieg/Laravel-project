@@ -19,6 +19,10 @@ class PostController extends Controller
 
         $post = new Post;
         $post->description = $request->input('description');
+        $post->title = $request->input('title');
+        $post->brand = $request->input('brand');
+        $post->model = $request->input('model');
+        $post->model_year = $request->input('model_year');
         $post->user_id = Auth::id();
         $post->save();
         return redirect('/postpage');

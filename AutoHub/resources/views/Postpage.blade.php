@@ -14,9 +14,23 @@
 <body>
     <form method="POST" action="/posts" enctype="multipart/form-data">
         @csrf
-        <label for="description">Create car post</label><br>
-        <textarea id="description" name="description" rows="4" cols="50"></textarea>
-        <!--<input type="file" name="carImg" id="carImg">-->
+        <label for="title">Title</label><br>
+        <input type="text" id="title" name="title" placeholder="Write a little title here.."><br>
+
+        <label for="brand">Brand</label><br>
+        <input type="text" id="brand" name="brand" placeholder="Ford"><br>
+
+        <label for="model">Model</label><br>
+        <input type="text" id="model" name="model" placeholder="Mustang"><br>
+
+        <label for="model_year">Model year</label><br>
+        <input type="number" id="model_year" name="model_year" min="1900" max="2024" step="1" placeholder="Year" /><br> <!-- CHANGE TO YEAR PICKER WITH JS-->
+
+        <label for="description">Description</label><br>
+        <textarea id="description" name="description" placeholder="Why do you love this car?" rows="4" cols="50"></textarea>
+
+        <!--<input type="file" name="car_img" id="car_img">--> <!-- NOT WORKING YET-->
+        <br>
         <input type="submit" value="Add car">
     </form>
 </body>
@@ -25,7 +39,12 @@
     @if (isset($posts) && !$posts->isEmpty())
     @foreach ($posts as $post)
     <div id="post">
-        <p>{{ $post->user->name }}:</p>
+        <h2>{{ $post->user->name }} says: {{ $post->title }}</h2>
+        <h3>Brand:</h3>
+        <p>{{ $post->brand }}</p>
+        <h3>Model:</h3>
+        <p>{{ $post->model }}, {{ $post->model_year }}</p>
+        <h3>Description:</h3>
         <p>{{ $post->description }}</p>
     </div>
     @endforeach
