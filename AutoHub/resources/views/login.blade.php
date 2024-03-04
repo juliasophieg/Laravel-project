@@ -1,5 +1,7 @@
 @extends('layouts.app')
-<div class="h-screen flex items-center justify-center">
+<div class="h-screen flex flex-col items-center justify-center">
+    <h2 class="text-3xl mb-2">Welcome to Autohub 1.1</h2>
+    <p class="text-xl mb-5">Please login or register to continue</p>
     <form method="post" class="w-1/3 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         @csrf
         <div class=" mb-4">
