@@ -24,7 +24,8 @@
         <input type="text" id="model" name="model" placeholder="Mustang"><br>
 
         <label for="model_year">Model year</label><br>
-        <input type="number" id="model_year" name="model_year" min="1900" max="2024" step="1" placeholder="Year" /><br> <!-- CHANGE TO YEAR PICKER WITH JS-->
+        <input type="number" id="model_year" name="model_year" min="1900" max="2024" step="1"
+            placeholder="Year" /><br> <!-- CHANGE TO YEAR PICKER WITH JS-->
 
         <label for="description">Description</label><br>
         <textarea id="description" name="description" placeholder="Why do you love this car?" rows="4" cols="50"></textarea>
@@ -37,18 +38,18 @@
 
 <div>
     @if (isset($posts) && !$posts->isEmpty())
-    @foreach ($posts as $post)
-    <div id="post">
-        <h2>{{ $post->user->name }} says: {{ $post->title }}</h2>
-        <h3>Brand:</h3>
-        <p>{{ $post->brand }}</p>
-        <h3>Model:</h3>
-        <p>{{ $post->model }}, {{ $post->model_year }}</p>
-        <h3>Description:</h3>
-        <p>{{ $post->description }}</p>
-    </div>
-    @endforeach
+        @foreach ($posts as $post)
+            <div id="post">
+                {{-- <h2>{{ $post->user->name }} says: {{ $post->title }}</h2> --}}
+                <h3>Brand:</h3>
+                <p>{{ $post->brand }}</p>
+                <h3>Model:</h3>
+                <p>{{ $post->model }}, {{ $post->model_year }}</p>
+                <h3>Description:</h3>
+                <p>{{ $post->description }}</p>
+            </div>
+        @endforeach
     @else
-    <p>No posts available.</p>
+        <p>No posts available.</p>
     @endif
 </div>
