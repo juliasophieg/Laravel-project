@@ -37,3 +37,7 @@ Route::get('/postpage', function () { //Routing till postpage
 
 Route::get('postpage', PostpageController::class)->middleware('auth');
 Route::post('posts', PostController::class)->middleware('auth');
+
+
+
+Route::delete('/post/{post}', [\App\Http\Controllers\DeletepostController::class, 'destroy'])->name('post.destroy');
