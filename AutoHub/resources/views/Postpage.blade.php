@@ -44,8 +44,12 @@
                 <div class="flex flex-row justify-between mr-5 ml-5">
                     <h2 class="text-xl font-semibold text-gray-800">{{ $post->user->name }} - {{ $post->title }}</h2>
                     <div class="flex flex-row">
-                        {{-- <p class="mr-10"><a href="{{ route('edit') }}">Edit</a></p>
-                        <p><a href="{{ route('delete') }}">Delete</a></p> --}}
+                        {{-- <p class="mr-10"><a href="{{ route('edit') }}">Edit</a></p> --}}
+                        <form method="POST" action="{{ route('post.destroy', $post) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Delete</button>
+                        </form>
                     </div>
                 </div>
                 <div class="w-4/5 h-72 bg-white mr-auto ml-auto mt-4">Placeholder för bild</div>
