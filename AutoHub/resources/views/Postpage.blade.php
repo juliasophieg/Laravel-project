@@ -42,6 +42,7 @@
     <div id="post" class="w-2/3 bg-gray-100 border border-solid rounded-xl border-gray-600 p-6 mb-10 ml-auto mr-auto">
         <div class="flex flex-row justify-between mr-5 ml-5">
             <h2 class="text-xl font-semibold text-gray-800">{{ $post->user->name }} - {{ $post->title }}</h2>
+            @if(Auth::user()->id == $post->user_id)
             <div class="flex flex-row">
                 <a class="mr-6" href="{{ route('posts.edit', ['id' => $post->id]) }}">Edit</a>
 
@@ -51,6 +52,7 @@
                     <button type="submit">Delete</button>
                 </form>
             </div>
+            @endif
         </div>
         <div class="w-4/5 h-72 bg-white mr-auto ml-auto mt-4">Placeholder för bild</div>
         <h3 class="text-lg font-medium text-gray-700 mt-2">Brand:</h3>
