@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('brand');
             $table->string('model');
             $table->integer('model_year');
+            $table->string('car_img');
             $table->timestamps(); //* HAR AUTOMATISK CREATED_AT OCH UPDATED_AT*//
         });
     }

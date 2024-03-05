@@ -13,7 +13,8 @@ class PostController extends Controller
         $this->validate(
             $request,
             [
-                'description' => 'required | string | min:10'
+                'description' => 'required|string|min:10',
+                'car_img' => 'required|file'
             ]
         );
 
@@ -24,14 +25,12 @@ class PostController extends Controller
         $post->model = $request->input('model');
         $post->model_year = $request->input('model_year');
         $post->user_id = Auth::id();
+        if ($request->hasFile('car_img')) { // Corrected field name here
+            $post->car_img = $request->file('car_img')->store('imgs', 'public');
+        } else {
+            echo 'no pic';
+        }
         $post->save();
         return redirect('/postpage');
     }
 }
-
-    /* public function index(Request $request)
-    {
-        $posts = Post::all();
-
-        return view('postpage', ['posts' => $posts]);
-    } */

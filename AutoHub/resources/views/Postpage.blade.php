@@ -53,7 +53,9 @@
                         </form>
                     </div>
                 </div>
-                <div class="w-4/5 h-72 bg-white mr-auto ml-auto mt-4">Placeholder för bild</div>
+                <div class="w-4/5 h-72 mr-auto ml-auto mt-4">
+                    <img src="{{ asset('storage/' . $post->car_img) }}">
+                </div>
                 <h3 class="text-lg font-medium text-gray-700 mt-2">Brand:</h3>
                 <p class="text-gray-600">{{ $post->brand }}</p>
                 <h3 class="text-lg font-medium text-gray-700 mt-2">Model:</h3>
