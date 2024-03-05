@@ -41,3 +41,4 @@ Route::post('posts', PostController::class)->middleware('auth');
 
 
 Route::delete('/post/{post}', [\App\Http\Controllers\DeletepostController::class, 'destroy'])->name('post.destroy');
+Route::get('/post/{post}/edit', [\App\Http\Controllers\PostController::class, 'edit'])->name('post.edit');

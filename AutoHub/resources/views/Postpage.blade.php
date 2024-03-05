@@ -30,7 +30,8 @@
         <label for="description">Description</label><br>
         <textarea id="description" name="description" placeholder="Why do you love this car?" rows="4" cols="50"></textarea>
 
-        <!--<input type="file" name="car_img" id="car_img">--> <!-- NOT WORKING YET-->
+        <label for="car_img">Picture</label>
+        <input type="file" name="car_img" id="car_img">
         <br>
         <input type="submit" value="Add car">
     </form>
@@ -44,7 +45,7 @@
                 <div class="flex flex-row justify-between mr-5 ml-5">
                     <h2 class="text-xl font-semibold text-gray-800">{{ $post->user->name }} - {{ $post->title }}</h2>
                     <div class="flex flex-row">
-                        {{-- <p class="mr-10"><a href="{{ route('edit') }}">Edit</a></p> --}}
+                        <a class="mr-6" href="{{ route('post.edit', $post) }}">Edit</a>
                         <form method="POST" action="{{ route('post.destroy', $post) }}">
                             @csrf
                             @method('DELETE')
