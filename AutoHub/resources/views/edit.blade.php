@@ -20,7 +20,7 @@
     </div>
 </header>
 
-<body class="flex flex-col items-center">
+<body class="bg-sky-50 flex flex-col items-center">
     <div class="text-xl mt-10 mb-5">
         <h2>Update post</h2>
     </div>
@@ -30,23 +30,23 @@
         @method('PUT')
         <div>
             <label class="font-bold" for="title">Title</label><br>
-            <input class="w-full p-1 mb-3 bg-slate-100 rounded" type="text" id="title" name="title" value="{{$post->title}}">
+            <input class="w-full p-2 mb-3 rounded" type="text" id="title" name="title" value="{{$post->title}}">
         </div>
 
         <div class="flex gap-5">
             <div class="w-1/2">
                 <label class="font-bold" for="brand">Brand</label><br>
-                <input class="w-full p-1 mb-3 bg-slate-100 rounded" type="text" id="brand" name="brand" value="{{$post->brand}}">
+                <input class="w-full p-2 mb-3 rounded" type="text" id="brand" name="brand" value="{{$post->brand}}">
             </div>
             <div class="w-1/2">
                 <label class="font-bold" for="model">Model</label><br>
-                <input class="w-full p-1 mb-3 bg-slate-100 rounded" type="text" id="model" name="model" value="{{$post->model}}">
+                <input class="w-full p-2 mb-3 rounded" type="text" id="model" name="model" value="{{$post->model}}">
             </div>
         </div>
         <div class="flex gap-5">
             <div class="w-1/2">
                 <label class="font-bold" for="model_year">Model year</label>
-                <input class="w-full p-1 mb-3 bg-slate-100 rounded" type="number" id="model_year" name="model_year" min="1900" max="2024" step="1" value="{{$post->model_year}}" /> <!-- CHANGE TO YEAR PICKER WITH JS-->
+                <input class="w-full p-2 mb-3 rounded" type="number" id="model_year" name="model_year" min="1900" max="2024" step="1" value="{{$post->model_year}}" /> <!-- CHANGE TO YEAR PICKER WITH JS-->
             </div>
             <div class="w-1/2">
                 <label class="font-bold" for="car_img">Picture</label>
@@ -55,7 +55,7 @@
         </div>
         <div>
             <label class="font-bold" for="description">Description</label>
-            <textarea class="w-full p-1 mb-3 bg-slate-100 rounded" id="description" name="description" rows="4" cols="50">{{$post->description}}</textarea>
+            <textarea class="w-full p-2 mb-3 rounded" id="description" name="description" rows="4" cols="50">{{$post->description}}</textarea>
         </div>
         <div class="flex w-full justify-center">
             <input class="font-semibold text-white w-1/4 p-2 bg-sky-500 rounded-lg hover:bg-sky-600 cursor-pointer" type="submit" value="Update">
