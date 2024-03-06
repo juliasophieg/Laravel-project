@@ -41,7 +41,7 @@
     @if (isset($posts) && !$posts->isEmpty())
         @foreach ($posts as $post)
             <div id="post"
-                class="w-2/3 bg-gray-100 border border-solid rounded-xl border-gray-600 p-6 mb-10 ml-auto mr-auto">
+                class="w-2/3 bg-gray-100 border border-solid rounded-xl border-gray-600 p-6 mb-10 ml-auto mr-auto flex flex-col">
                 <div class="flex flex-row justify-between mr-5 ml-5">
                     <h2 class="text-xl font-semibold text-gray-800">{{ $post->user->name }} - {{ $post->title }}</h2>
                     <div class="flex flex-row">
@@ -53,18 +53,25 @@
                         </form>
                     </div>
                 </div>
-                <div class="w-4/5 h-72 mr-auto ml-auto mt-4">
-                    <img src="{{ asset('storage/' . $post->car_img) }}">
+                <div class="flex flex-row">
+                    <img class="max-w-lg mr-auto ml-auto mt-4" src="{{ asset('storage/' . $post->car_img) }}">
+
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-700 mt-2">Brand:</h3>
+                        <p class="text-gray-600">{{ $post->brand }}</p>
+                        <h3 class="text-lg font-medium text-gray-700 mt-2">Model:</h3>
+                        <p class="text-gray-600">{{ $post->model }}, {{ $post->model_year }}</p>
+                        <h3 class="text-lg font-medium text-gray-700 mt-2">Description:</h3>
+                        <p class="text-gray-600">{{ $post->description }}</p>
+                    </div>
                 </div>
-                <h3 class="text-lg font-medium text-gray-700 mt-2">Brand:</h3>
-                <p class="text-gray-600">{{ $post->brand }}</p>
-                <h3 class="text-lg font-medium text-gray-700 mt-2">Model:</h3>
-                <p class="text-gray-600">{{ $post->model }}, {{ $post->model_year }}</p>
-                <h3 class="text-lg font-medium text-gray-700 mt-2">Description:</h3>
-                <p class="text-gray-600">{{ $post->description }}</p>
             </div>
         @endforeach
     @else
         <p>No posts available.</p>
     @endif
+</div>
+
+<div class="flex flex-row bg-slate-400">
+    <p class="text-xl"></p>
 </div>

@@ -25,7 +25,7 @@ class PostController extends Controller
         $post->model = $request->input('model');
         $post->model_year = $request->input('model_year');
         $post->user_id = Auth::id();
-        if ($request->hasFile('car_img')) { // Corrected field name here
+        if ($request->hasFile('car_img')) {
             $post->car_img = $request->file('car_img')->store('imgs', 'public');
         } else {
             echo 'no pic';
