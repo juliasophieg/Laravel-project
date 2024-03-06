@@ -24,7 +24,8 @@
         <input type="text" id="model" name="model" placeholder="Mustang"><br>
 
         <label for="model_year">Model year</label><br>
-        <input type="number" id="model_year" name="model_year" min="1900" max="2024" step="1" placeholder="Year" /><br> <!-- CHANGE TO YEAR PICKER WITH JS-->
+        <input type="number" id="model_year" name="model_year" min="1900" max="2024" step="1"
+            placeholder="Year" /><br> <!-- CHANGE TO YEAR PICKER WITH JS-->
 
         <label for="description">Description</label><br>
         <textarea id="description" name="description" placeholder="Why do you love this car?" rows="4" cols="50"></textarea>
@@ -44,7 +45,7 @@
                 <div class="flex flex-row justify-between mr-5 ml-5">
                     <h2 class="text-xl font-semibold text-gray-800">{{ $post->user->name }} - {{ $post->title }}</h2>
                     <div class="flex flex-row">
-                        <a class="mr-6" href="{{ route('post.edit', $post) }}">Edit</a>
+                        <a class="mr-6" href="{{ route('posts.edit', ['id' => $post->id]) }}">Edit</a>
                         <form method="POST" action="{{ route('post.destroy', $post) }}">
                             @csrf
                             @method('DELETE')
@@ -65,10 +66,9 @@
                     </div>
                 </div>
             </div>
-    @endforeach
+        @endforeach
     @else
-    <p>No posts available.</p>
+        <p>No posts available.</p>
     @endif
 
 </div>
-
