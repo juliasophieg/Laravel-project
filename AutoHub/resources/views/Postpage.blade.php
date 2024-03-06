@@ -24,8 +24,7 @@
         <input type="text" id="model" name="model" placeholder="Mustang"><br>
 
         <label for="model_year">Model year</label><br>
-        <input type="number" id="model_year" name="model_year" min="1900" max="2024" step="1"
-            placeholder="Year" /><br> <!-- CHANGE TO YEAR PICKER WITH JS-->
+        <input type="number" id="model_year" name="model_year" min="1900" max="2024" step="1" placeholder="Year" /><br> <!-- CHANGE TO YEAR PICKER WITH JS-->
 
         <label for="description">Description</label><br>
         <textarea id="description" name="description" placeholder="Why do you love this car?" rows="4" cols="50"></textarea>
@@ -66,12 +65,10 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+    @endforeach
     @else
-        <p>No posts available.</p>
+    <p>No posts available.</p>
     @endif
+
 </div>
 
-<div class="flex flex-row bg-slate-400">
-    <p class="text-xl"></p>
-</div>
