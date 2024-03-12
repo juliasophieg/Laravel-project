@@ -24,7 +24,7 @@
     <div class="text-xl mt-10 mb-5">
         <h2>Update post</h2>
     </div>
-
+    <img class="max-w-md" src="{{ asset('storage/' . $post->car_img) }}">
     <form class="flex flex-col max-w-md" method="POST" action="{{ route('posts.update', ['id' => $post->id]) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
