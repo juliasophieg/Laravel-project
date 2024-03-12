@@ -45,9 +45,4 @@ class PostTest extends TestCase
             'description' => 'Test description',
         ]);
     }
-
-
-    public function test_delete_post()
-    {
-    }
 }

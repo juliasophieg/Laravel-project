@@ -5,6 +5,8 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterTest extends TestCase
 {
@@ -17,18 +19,17 @@ class RegisterTest extends TestCase
     {
         $this->followingRedirects();
 
-        $email = 'test_' . time() . '@example.com';
-
-        $response = $this->post('/register', [
+        $user = User::create([
             'name' => 'TestUser',
-            'email' => $email,
-            'password' => 'TestPassword',
-            'password_confirmation' => 'TestPassword'
-
+            'email' => 'test_' . time() . '@example.com',
+            'password' => Hash::make('TestPassword'),
         ]);
 
-        $response->assertSeeText('Welcome');
+        $this->assertNotNull($user);
+        $this->assertEquals('TestUser', $user->name);
 
+        $response = $this->actingAs($user)->get('/login');
+        $response->assertSeeText('Welcome');
         $response->assertStatus(200);
     }
 }
