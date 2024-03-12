@@ -46,9 +46,6 @@ class PostTest extends TestCase
         ]);
     }
 
-    public function test_update_post()
-    {
-    }
 
     public function test_delete_post()
     {

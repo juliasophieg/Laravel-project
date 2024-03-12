@@ -11,7 +11,7 @@ use App\Models\User;
 use Illuminate\Http\UploadedFile;
 
 
-class PostTest extends TestCase
+class PostpageTest extends TestCase
 {
     use RefreshDatabase;
 
