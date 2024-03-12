@@ -12,6 +12,27 @@
     </div>
 </header>
 
+<style>
+    .border-with-shadow {
+        position: relative;
+    }
+
+    .border-with-shadow::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        /* Adjust this value to control the distance of the shadow from the border */
+        left: 0;
+        width: 100%;
+        height: 2px;
+        /* Adjust this value to control the thickness of the shadow */
+        background-color: rgba(0, 0, 0, 0.2);
+        /* Adjust the color and opacity of the shadow */
+        filter: blur(4px);
+        /* Adjust the blur radius of the shadow */
+    }
+</style>
+
 <body>
     <div class="bg-sky-50 flex flex-col items-center w-screen">
         <div class="text-xl mt-10 mb-5">
@@ -67,9 +88,10 @@
         @if (isset($posts) && !$posts->isEmpty())
             @foreach ($posts as $post)
                 <div id="post"
-                    class="w-full bg-white border border-solid rounded-sm shadow-xl p-20 mb-20 ml-auto mr-auto flex flex-col">
-                    <div class="flex flex-row justify-between mr-10 ml-10">
-                        <h2 class="text-4xl font-semibold text-gray-800">{{ $post->user->name }} - {{ $post->title }}
+                    class="w-11/12 bg-white border border-solid rounded-sm shadow-xl p-10 mb-20 mt-10 ml-auto mr-auto flex flex-col
+                    lg:w-2/3">
+                    <div class="flex flex-row justify-between mr-5 ml-5 border-b-2 border-black border-with-shadow">
+                        <h2 class="text-2xl font-semibold text-gray-800">{{ $post->user->name }} - {{ $post->title }}
                         </h2>
                         <div class="flex flex-row">
                             <a class="mr-6" href="{{ route('posts.edit', ['id' => $post->id]) }}">Edit</a>
@@ -80,19 +102,20 @@
                             </form>
                         </div>
                     </div>
-                    <div class="flex flex-row-reverse justify-between mt-8">
-                        <img class="max-w-lg mr-10 mt-4" src="{{ asset('storage/' . $post->car_img) }}">
+                    <div class="flex flex-col md:flex-row-reverse justify-between mt-8">
+                        <img class="w-full md:max-w-xs lg:max-w-sm mr-5 mt-2 md:mt-0"
+                            src="{{ asset('storage/' . $post->car_img) }}">
 
-                        <div class="flex flex-col justify-center ml-10 ">
-                            <h3 class="text-2xl font-medium text-gray-700 mt-2">Brand:</h3>
+                        <div class="flex flex-col justify-center ml-5 ">
+                            <h3 class="text-ml font-medium text-gray-700 mt-2">Brand:</h3>
                             <p class="text-gray-600">{{ $post->brand }}</p>
-                            <h3 class="text-2xl font-medium text-gray-700 mt-2">Model:</h3>
+                            <h3 class="text-ml font-medium text-gray-700 mt-2">Model:</h3>
                             <p class="text-gray-600">{{ $post->model }}, {{ $post->model_year }}</p>
-                            <h3 class="text-2xl font-medium text-gray-700 mt-2">Description:</h3>
+                            <h3 class="text-ml font-medium text-gray-700 mt-2">Description:</h3>
                             <p class="text-gray-600">{{ $post->description }}</p>
                         </div>
                     </div>
-                    <div class=" mt-14 mr-10 flex justify-end text-slate-400">
+                    <div class=" mt-14 mr-5 flex justify-end text-slate-400">
                         <?php if ($post->updated_at != $post->created_at) {
                             echo $post->updated_at;
                         } else {
