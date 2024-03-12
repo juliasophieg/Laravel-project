@@ -48,7 +48,11 @@ class PostController extends Controller
         $post->brand = $request->input('brand');
         $post->model = $request->input('model');
         $post->model_year = $request->input('model_year');
-
+        if ($request->hasFile('car_img')) {
+            $post->car_img = $request->file('car_img')->store('imgs', 'public');
+        } else {
+            echo 'no pic';
+        }
         $post->save();
         return redirect('/postpage')->with('success', 'post updated successfully');
     }
