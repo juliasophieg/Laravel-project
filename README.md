@@ -49,7 +49,7 @@ php artisan serve
 ```
 
 ## Testing flaws
-As this is our first project where we wrote tests, we initially did not use factories in them. Instead we created new test-users in the test code. Because of a time limit we did not have time to rewrite them with factories, but further on we are know how a factory should be used in user and post testing etc.
+In our testing, we have had issues with successfully writing a code that tests the "update" on the picture element in the code. And therefore that part of the test is not in the application.
 
 ## License
 
