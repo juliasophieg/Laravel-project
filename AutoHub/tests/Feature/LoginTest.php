@@ -21,22 +21,16 @@ class LoginTest extends TestCase
 
     public function test_login_user()
     {
-        $user = User::create(
-            [
-                'name' => 'Test',
-                'email' => 'test@mail.se',
-                'password' => Hash::make('999'),
-            ]
-        );
+        $user = User::factory()->create();
 
         $this->followingRedirects();
 
         $response = $this->actingAs($user)->post('/login', [
-            'email' => 'test@mail.se',
-            'password' => '999',
+            'email' => $user->email,
+            'password' => 'password',
         ]);
 
-        $response->assertSeeText('Hello Test!');
+        $response->assertSeeText('Hello ' . $user->name);
         $response->assertStatus(200);
     }
 }

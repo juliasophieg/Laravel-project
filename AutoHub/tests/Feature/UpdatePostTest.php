@@ -16,23 +16,8 @@ class UpdatePostTest extends TestCase
 
     public function test_update_post()
     {
-        $user = User::create([
-            'name' => 'Test',
-            'email' => 'test@email.se',
-            'password' => Hash::make('999'),
-        ]);
 
-        $this->actingAs($user);
-
-        $post = Post::create([
-            'title' => 'Test 3 title',
-            'brand' => 'Test 3 brand',
-            'model' => 'Test 3 model',
-            'model_year' => 2023,
-            'description' => 'Test 3 description',
-            'car_img' => 'test_image.jpg',
-            'user_id' => $user->id,
-        ]);
+        $post = Post::factory()->create();
 
         $newData = [
             'title' => 'New title',
@@ -40,7 +25,6 @@ class UpdatePostTest extends TestCase
             'model' => 'New model',
             'model_year' => 2024,
             'description' => 'New description',
-            'car_img' => 'new_test_image.jpg',
         ];
 
         $this->followingRedirects();
