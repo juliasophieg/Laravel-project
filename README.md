@@ -2,7 +2,7 @@
 
 
 # Laravel project by William (La) & Julia - YRGO23
-In this assignment you're going to write a Laravel application. The purpose of this project is to us a better understanding of writing backend applications. The application was supposed to contain the following features of Laravel:
+In this assignment we created a Laravel application. The purpose of this project is to give us a better understanding of writing backend applications. The application was supposed to contain the following features of Laravel:
 
 - Controllers
 - Migrations
