@@ -19,26 +19,20 @@ class PostpageTest extends TestCase
     {
         $this->followingRedirects();
 
-        $user = User::create(
-            [
-                'name' => 'Test',
-                'email' => 'test@email.se',
-                'password' => Hash::make('999'),
-            ]
-        );
+        $user = User::factory()->create();
 
         $image = UploadedFile::fake()->image('test_image.jpg');
 
         $this->actingAs($user)->post('posts', [
-            'title' => 'Test title',
-            'brand' => 'Test brand',
-            'model' => 'Test model',
-            'model_year' => 2024,
-            'description' => 'Test description',
+            'title' => 'Mustang 4-ever',
+            'brand' => 'Ford',
+            'model' => 'Mustang',
+            'model_year' => 1966,
+            'description' => 'Because Mustang is the best car ever!',
             'car_img' => $image,
         ]);
         $response = $this->get('/postpage');
 
-        $response->assertSeeText('AutoHub');
+        $response->assertSeeText('Mustang 4-ever');
     }
 }

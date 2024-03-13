@@ -18,31 +18,26 @@ class PostTest extends TestCase
     public function test_make_post()
     {
 
-        $user = User::create(
-            [
-                'name' => 'Test',
-                'email' => 'test@email.se',
-                'password' => Hash::make('999'),
-            ]
-        );
+        $user = User::factory()->create();
 
         $image = UploadedFile::fake()->image('test_image.jpg');
 
         $this->actingAs($user)->post('posts', [
-            'title' => 'Test title',
-            'brand' => 'Test brand',
-            'model' => 'Test model',
-            'model_year' => 2024,
-            'description' => 'Test description',
+            'title' => 'Mustang 4-ever',
+            'brand' => 'Ford',
+            'model' => 'Mustang',
+            'model_year' => 1966,
+            'description' => 'Because Mustang is the best car ever!',
             'car_img' => $image,
         ]);
 
         $this->assertDatabaseHas('posts', [
-            'title' => 'Test title',
-            'brand' => 'Test brand',
-            'model' => 'Test model',
-            'model_year' => 2024,
-            'description' => 'Test description',
+            'title' => 'Mustang 4-ever',
+            'brand' => 'Ford',
+            'model' => 'Mustang',
+            'model_year' => 1966,
+            'description' => 'Because Mustang is the best car ever!',
+            'user_id' => $user->id
         ]);
     }
 }
