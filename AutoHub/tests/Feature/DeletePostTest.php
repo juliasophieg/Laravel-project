@@ -10,11 +10,11 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
 
-class UpdatePostTest extends TestCase
+class DeletePostTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_update_post()
+    public function test_delete_post()
     {
         $user = User::create([
             'name' => 'Test',
@@ -24,31 +24,22 @@ class UpdatePostTest extends TestCase
 
         $this->actingAs($user);
 
+        $image = UploadedFile::fake()->image('test_image.jpg');
+
         $post = Post::create([
             'title' => 'Test 3 title',
             'brand' => 'Test 3 brand',
             'model' => 'Test 3 model',
-            'model_year' => 2023,
+            'model_year' => 2024,
             'description' => 'Test 3 description',
-            'car_img' => 'test_image.jpg',
+            'car_img' => $image,
             'user_id' => $user->id,
         ]);
 
-        $newData = [
-            'title' => 'New title',
-            'brand' => 'New brand',
-            'model' => 'New model',
-            'model_year' => 2024,
-            'description' => 'New description',
-            'car_img' => 'new_test_image.jpg',
-        ];
-
         $this->followingRedirects();
 
-        $response = $this->put('/posts/' . $post->id, $newData);
-
+        $response = $this->delete('/post/' . $post->id);
+        $this->assertDatabaseMissing('posts', ['id' => $post->id]); // Ensure the post has been deleted from the database
         $response->assertStatus(200);
-
-        $this->assertDatabaseHas('posts', $newData);
     }
 }

@@ -14,4 +14,14 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    protected $fillable = [
+        'title',
+        'brand',
+        'model',
+        'model_year',
+        'description',
+        'car_img',
+        'user_id',
+    ];
 }

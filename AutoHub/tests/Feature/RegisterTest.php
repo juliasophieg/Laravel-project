@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterTest extends TestCase
 {
@@ -13,6 +14,9 @@ class RegisterTest extends TestCase
      *
      * @return void
      */
+
+    use RefreshDatabase;
+
     public function test_user_registration()
     {
         $this->followingRedirects();
@@ -24,7 +28,11 @@ class RegisterTest extends TestCase
             'email' => $email,
             'password' => 'TestPassword',
             'password_confirmation' => 'TestPassword'
+        ]);
 
+        $this->assertDatabaseHas('users', [
+            'name' => 'TestUser',
+            'email' => $email
         ]);
 
         $response->assertSeeText('Welcome');
